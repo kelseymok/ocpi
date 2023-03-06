@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "PriceComponent",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": [
+                "ENERGY",
+                "FLAT",
+                "PARKING_TIME",
+                "TIME"
+            ]
+        },
+        "price": {
+            "type": "number"
+        },
+        "step_size": {
+            "type": "integer"
+        },
+        "vat": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "price",
+        "step_size"
+    ]
+}
