@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "GeoLocation",
+    "type": "object",
+    "properties": {
+        "uid": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "type": {
+            "type": "string",
+            "additionalProperties": false,
+            "enum": [
+                "AD_HOC_USER",
+                "APP_USER",
+                "OTHER",
+                "RFID"
+            ]
+        },
+        "contract_id": {
+            "type": "string",
+            "maxLength": 36
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "uid",
+        "type",
+        "contract_id"
+    ]
+}

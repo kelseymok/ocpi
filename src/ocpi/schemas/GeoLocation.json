@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "GeoLocation",
+    "type": "object",
+    "properties": {
+        "latitude": {
+            "type": "string",
+            "pattern": "-?[0-9]{1,2}\\.[0-9]{5,7}",
+            "maxLength": 10
+        },
+        "longitude": {
+            "type": "string",
+            "pattern": "-?[0-9]{1,3}\\.[0-9]{5,7}",
+            "maxLength": 11
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "latitude",
+        "longitude"
+    ]
+}
