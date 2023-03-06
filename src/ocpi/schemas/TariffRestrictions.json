@@ -66,5 +66,5 @@
               ]
       }
     },
-    "additionalProperties": false,
+    "additionalProperties": false
 }
