@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "URL",
+    "type": "object",
+    "properties": {
+        "url": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "url"
+    ]
+}

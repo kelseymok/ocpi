@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "DisplayText",
+    "type": "object",
+    "properties": {
+        "language": {
+            "type": "string",
+            "maxLength": 2
+        },
+        "text": {
+            "type": "string",
+            "maxLength": 512
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "language",
+        "text"
+    ]
+}

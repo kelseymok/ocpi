@@ -1,0 +1,73 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "TariffRestrictions",
+    "type": "object",
+    "properties": {
+        "start_time": {
+            "type": "string",
+            "maxLength": 5
+        },
+        "end_time": {
+            "type": "string",
+            "maxLength": 5
+        },
+        "start_date": {
+            "type": "string",
+            "maxLength": 10
+        },
+        "end_date": {
+            "type": "string",
+            "maxLength": 10
+        },
+        "min_kwh": {
+            "type": "number"
+        },
+        "max_kwh": {
+            "type": "number"
+        },
+        "min_current": {
+            "type": "number"
+        },
+        "max_current": {
+            "type": "number"
+        },
+        "min_power": {
+            "type": "number"
+        },
+        "max_power": {
+            "type": "number"
+        },
+        "min_duration": {
+            "type": "integer"
+        },
+        "max_duration": {
+            "type": "integer"
+        },
+        "day_of_week": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                  "MONDAY",
+                  "TUESDAY",
+                  "WEDNESDAY",
+                  "THURSDAY",
+                  "FRIDAY",
+                  "SATURDAY",
+                  "SUNDAY"
+                ]
+            }
+      },
+        "reservation": {
+              "type": "string",
+              "enum": [
+                "RESERVATION",
+                "RESERVATION_EXPIRES"
+              ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+        "day_of_week"
+    ]
+}

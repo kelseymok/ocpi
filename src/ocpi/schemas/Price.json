@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Price",
+    "type": "object",
+    "properties": {
+        "excl_vat": {
+            "type": "number"
+        },
+        "incl_vat": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "excl_vat"
+    ]
+}
