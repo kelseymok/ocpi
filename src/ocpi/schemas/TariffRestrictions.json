@@ -67,7 +67,4 @@
       }
     },
     "additionalProperties": false,
-    "required": [
-        "day_of_week"
-    ]
 }
