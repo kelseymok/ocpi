@@ -19,7 +19,7 @@
             "minItems": 1,
             "items": {
                 "type": "object",
-                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/SignedValue.json"
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/SignedValue.json"
             }
         },
         "url": {

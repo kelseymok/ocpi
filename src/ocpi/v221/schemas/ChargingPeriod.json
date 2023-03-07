@@ -5,14 +5,15 @@
     "properties": {
         "start_date_time": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "maxLength": 25
         },
         "dimensions": {
             "type": "array",
             "maxLength": 1,
             "items": {
                 "type": "object",
-                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/CdrDimension.json"
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/CdrDimension.json"
             }
         },
         "tariff_id": {

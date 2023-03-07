@@ -28,7 +28,7 @@
             "maxLength": 3
         },
         "coordinates": {
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/GeoLocation.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/GeoLocation.json"
         },
         "evse_uid": {
             "type": "string",

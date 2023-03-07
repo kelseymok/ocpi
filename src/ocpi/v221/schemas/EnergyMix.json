@@ -10,14 +10,14 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/EnergySource.json"
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/EnergySource.json"
             }
         },
         "environ_impact": {
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/EnvironmentalImpact.json"
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/EnvironmentalImpact.json"
             }
         },
         "supplier_name": {

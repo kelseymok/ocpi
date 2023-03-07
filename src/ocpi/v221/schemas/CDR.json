@@ -31,7 +31,7 @@
         },
         "cdr_token": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/CdrToken.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/CdrToken.json"
         },
         "auth_method": {
            "type": "string",
@@ -47,7 +47,7 @@
         },
         "cdr_location": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/CdrLocation.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/CdrLocation.json"
         },
         "meter_id": {
             "type": "string",
@@ -61,7 +61,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Tariff.json"
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/Tariff.json"
             }
         },
         "charging_periods": {
@@ -69,45 +69,45 @@
             "minItems": 1,
             "items": {
                 "type": "object",
-                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/ChargingPeriod.json"
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/ChargingPeriod.json"
             }
         },
         "signed_data": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/SignedData.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/SignedData.json"
         },
         "total_cost": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/Price.json"
         },
         "total_fixed_cost": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/Price.json"
         },
         "total_energy": {
             "type": "number"
         },
         "total_energy_cost": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/Price.json"
         },
         "total_time": {
             "type": "number"
         },
         "total_time_cost": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/Price.json"
         },
         "total_parking_time": {
             "type": "number"
         },
         "total_parking_cost": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/Price.json"
         },
         "total_reservation_cost": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/Price.json"
         },
         "remark": {
             "type": "string",

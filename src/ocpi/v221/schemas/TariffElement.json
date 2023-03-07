@@ -8,12 +8,12 @@
             "minItems": 1,
             "items": {
                 "type": "object",
-                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/PriceComponent.json"
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/PriceComponent.json"
             }
         },
         "restrictions": {
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/TariffRestrictions.json"
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/v221/TariffRestrictions.json"
         }
     },
     "additionalProperties": false,
