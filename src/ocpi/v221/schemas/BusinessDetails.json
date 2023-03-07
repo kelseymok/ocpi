@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "BusinessDetails",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "website": {
+            "type": "string"
+        },
+        "logo": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Image.json"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "name"
+    ]
+}
