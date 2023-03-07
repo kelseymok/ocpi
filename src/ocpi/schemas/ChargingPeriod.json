@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ChargingPeriod",
+    "type": "object",
+    "properties": {
+        "start_date_time": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "dimensions": {
+            "type": "array",
+            "maxLength": 1,
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/CdrDimension.json"
+            }
+        },
+        "tariff_id": {
+            "type": "string",
+            "maxLength": 36
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "start_date_time",
+        "dimensions",
+        "tariff_id"
+    ]
+}
