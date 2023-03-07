@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "AdditionalGeoLocation",
+    "type": "object",
+    "properties": {
+        "latitude": {
+            "type": "string",
+            "pattern": "-?[0-9]{1,2}\\.[0-9]{5,7}",
+            "maxLength": 10
+        },
+        "longitude": {
+            "type": "string",
+            "pattern": "-?[0-9]{1,3}\\.[0-9]{5,7}",
+            "maxLength": 11
+        },
+        "name": {
+          "type": "object",
+          "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/DisplayText.json"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "latitude",
+        "longitude"
+    ]
+}
