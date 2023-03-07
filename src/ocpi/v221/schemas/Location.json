@@ -1,0 +1,169 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Location",
+    "type": "object",
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "publish": {
+            "type": "boolean"
+        },
+        "publish_allowed_to": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/PublishTokenType.json"
+            }
+        },
+        "address": {
+            "type": "string",
+            "maxLength": 45
+        },
+        "city": {
+            "type": "string",
+            "maxLength": 45
+        },
+        "state": {
+            "type": "string",
+            "maxLength": 20
+        },
+        "country": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "coordinates": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/GeoLocation.json"
+        },
+        "related_locations": {
+              "type": "array",
+              "items": {
+                  "type": "object",
+                  "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/AdditionalGeoLocation.json"
+              }
+        },
+        "parking_type": {
+            "type": "string",
+            "enum": [
+                "ALONG_MOTORWAY",
+                "PARKING_GARAGE",
+                "PARKING_LOT",
+                "ON_DRIVEWAY",
+                "ON_STREET",
+                "UNDERGROUND_GARAGE"
+            ]
+        },
+        "evses": {
+              "type": "array",
+              "items": {
+                  "type": "object",
+                  "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/EVSE.json"
+              }
+        },
+        "directions": {
+              "type": "array",
+              "items": {
+                  "type": "object",
+                  "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/DisplayText.json"
+              }
+        },
+        "operator": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/BusinessDetails.json"
+        },
+        "suboperator": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/BusinessDetails.json"
+        },
+        "owner": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/BusinessDetails.json"
+        },
+        "facilities": {
+              "type": "array",
+              "items": {
+                  "type": "string",
+                  "enum": [
+                      "HOTEL",
+                      "RESTAURANT",
+                      "CAFE",
+                      "MALL",
+                      "SUPERMARKET",
+                      "SPORT",
+                      "RECREATION_AREA",
+                      "NATURE",
+                      "MUSEUM",
+                      "BIKE_SHARING",
+                      "BUS_STOP",
+                      "TAXI_STAND",
+                      "TRAM_STOP",
+                      "METRO_STATION",
+                      "TRAIN_STATION",
+                      "AIRPORT",
+                      "PARKING_LOT",
+                      "CARPOOL_PARKING",
+                      "FUEL_STATION",
+                      "WIFI"
+                  ]
+              }
+        },
+        "time_zone": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "opening_times": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Hours.json"
+        },
+        "charging_when_closed": {
+            "type": "boolean"
+        },
+        "images": {
+              "type": "array",
+              "items": {
+                  "type": "object",
+                  "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Image.json"
+              }
+        },
+        "energy_mix": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/EnergyMix.json"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 25
+        },
+        "name": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "postal_code": {
+            "type": "string",
+            "maxLength": 10
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "country_code",
+        "party_id",
+        "id",
+        "publish",
+        "address",
+        "city",
+        "country",
+        "coordinates",
+        "last_updated",
+        "time_zone"
+    ]
+}

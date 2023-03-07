@@ -142,8 +142,6 @@
         "last_updated",
         "cdr_location",
         "currency",
-        "tariffs",
-        "charging_periods",
         "total_cost",
         "total_energy",
         "total_time"

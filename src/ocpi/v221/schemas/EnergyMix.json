@@ -31,8 +31,6 @@
     },
     "additionalProperties": false,
     "required": [
-        "is_green_energy",
-        "energy_sources",
-        "environ_impact"
+        "is_green_energy"
     ]
 }
