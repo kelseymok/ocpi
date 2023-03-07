@@ -1,0 +1,114 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "EVSE",
+    "type": "object",
+    "properties": {
+        "uid": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "AVAILABLE",
+                "BLOCKED",
+                "CHARGING",
+                "INOPERATIVE",
+                "OUTOFORDER",
+                "PLANNED",
+                "REMOVED",
+                "RESERVED",
+                "UNKNOWN"
+            ]
+        },
+        "status_schedule": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/StatusSchedule.json"
+            }
+        },
+        "capabilities": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                  "CHARGING_PROFILE_CAPABLE",
+                  "CHARGING_PREFERENCES_CAPABLE",
+                  "CHIP_CARD_SUPPORT",
+                  "CONTACTLESS_CARD_SUPPORT",
+                  "CREDIT_CARD_PAYABLE",
+                  "DEBIT_CARD_PAYABLE",
+                  "PED_TERMINAL",
+                  "REMOTE_START_STOP_CAPABLE",
+                  "RESERVABLE",
+                  "RFID_READER",
+                  "START_SESSION_CONNECTOR_REQUIRED",
+                  "TOKEN_GROUP_CAPABLE",
+                  "UNLOCK_CAPABLE"
+                ]
+            }
+        },
+        "directions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/DisplayText.json"
+            }
+        },
+        "parking_restrictions": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                  "EV_ONLY",
+                  "PLUGGED",
+                  "DISABLED",
+                  "CUSTOMERS",
+                  "MOTORCYCLES"
+                ]
+            }
+        },
+        "images": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Image.json"
+            }
+        },
+        "last_updated": {
+            "type": "string",
+            "maxLength": 25
+        },
+        "evse_id": {
+            "type": "string",
+            "maxLength": 48
+        },
+        "floor_level": {
+            "type": "string",
+            "maxLength": 4
+        },
+        "coordinates": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/GeoLocation.json"
+        },
+        "physical_reference": {
+            "type": "string",
+            "maxLength": 16
+        },
+        "connectors": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Connector.json"
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "uid",
+        "status",
+        "last_updated"
+    ]
+}
