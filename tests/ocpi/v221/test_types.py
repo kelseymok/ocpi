@@ -307,3 +307,221 @@ class TestTypes:
         }
         version = Version(**data)
         assert validator(version) is None
+
+
+    def test_publish_token_type(self):
+        data = {
+            "visual_number": "0055375624",
+            "issuer": "ANWB"
+        }
+        publish_token_type = PublishTokenType(**data)
+        assert validator(publish_token_type) is None
+
+    def test_additional_geo_location(self):
+        display_text = DisplayText(
+            language="en",
+            text="2.00 euro p/hour including VAT."
+        )
+        geolocation = AdditionalGeoLocation(latitude="50.770774", longitude="-126.104965", name=display_text)
+        assert validator(geolocation) is None
+
+    def test_status_schedule(self):
+        status_schedule = StatusSchedule(
+            period_begin="2023-01-01T09:00:00",
+            status=Status.available
+        )
+        assert validator(status_schedule) is None
+
+    def test_connector(self):
+        data = {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "max_voltage": 220,
+            "max_amperage": 16,
+            "tariff_ids": ["11"],
+            "last_updated": "2015-03-16T10:10:02Z"
+        }
+        connector = Connector(**data)
+        assert validator(connector) is None
+
+    def test_image(self):
+        image = Image(
+            url="https://example.com",
+            category=ImageCategory.charger,
+            type="type",
+            width=100,
+            height=100
+        )
+        assert validator(image) is None
+
+    def test_evse(self):
+        data = {
+            "uid": "3256",
+            "evse_id": "BE*BEC*E041503001",
+            "status": "AVAILABLE",
+            "capabilities": [
+              "RESERVABLE"
+            ],
+            "connectors": [
+                {
+                    "id": "1",
+                    "standard": "IEC_62196_T2",
+                    "format": "CABLE",
+                    "power_type": "AC_3_PHASE",
+                    "max_voltage": 220,
+                    "max_amperage": 16,
+                    "tariff_ids": ["11"],
+                    "last_updated": "2015-03-16T10:10:02Z"
+                },
+                {
+                    "id": "2",
+                    "standard": "IEC_62196_T2",
+                    "format": "SOCKET",
+                    "power_type": "AC_3_PHASE",
+                    "max_voltage": 220,
+                    "max_amperage": 16,
+                    "tariff_ids": ["13"],
+                    "last_updated": "2015-03-18T08:12:01Z"
+                }
+            ],
+            "physical_reference": "1",
+            "floor_level": "-1",
+            "last_updated": "2015-06-28T08:12:01Z"
+        }
+        evse = EVSE(**data)
+        assert validator(evse) is None
+
+    def test_business_details(self):
+        data = {
+            "name": "BeCharged"
+        }
+        business_details = BusinessDetails(**data)
+        assert validator(business_details) is None
+
+    def test_regular_hours(self):
+        data = {
+            "weekday": 1,
+            "period_begin": "00:00",
+            "period_end": "04:00"
+        }
+        regular_hours = RegularHours(**data)
+        assert validator(regular_hours) is None
+
+    def test_exceptional_period(self):
+        data = {
+            "period_begin": "00:00",
+            "period_end": "04:00"
+        }
+        exceptional_period = ExceptionalPeriod(**data)
+        assert validator(exceptional_period) is None
+
+    def test_hours(self):
+        data = {
+            "twentyfourseven": False,
+            "regular_hours": [
+                {
+                    "weekday": 1,
+                    "period_begin": "00:00",
+                    "period_end": "04:00"
+                },
+                {
+                    "weekday": 2,
+                    "period_begin": "00:00",
+                    "period_end": "04:00"
+                }
+            ],
+            "exceptional_openings": [
+                {
+                    "period_begin": "2018-12-25T05:00:00Z",
+                    "period_end": "2018-12-25T06:00:00Z"
+                }
+            ]
+        }
+        hours = Hours(**data)
+        assert validator(hours) is None
+
+    def test_location(self):
+        data = {
+            "country_code": "BE",
+            "party_id": "BEC",
+            "id": "LOC1",
+            "publish": True,
+            "name": "Gent Zuid",
+            "address": "F.Rooseveltlaan 3A",
+            "city": "Gent",
+            "postal_code": "9000",
+            "country": "BEL",
+            "coordinates": {
+                "latitude": "51.047599",
+                "longitude": "3.729944"
+            },
+            "parking_type": "ON_STREET",
+            "evses": [
+                {
+                    "uid": "3256",
+                    "evse_id": "BE*BEC*E041503001",
+                    "status": "AVAILABLE",
+                    "capabilities": [
+                        "RESERVABLE"
+                    ],
+            "connectors": [
+                {
+                    "id": "1",
+                    "standard": "IEC_62196_T2",
+                    "format": "CABLE",
+                    "power_type": "AC_3_PHASE",
+                    "max_voltage": 220,
+                    "max_amperage": 16,
+                    "tariff_ids": ["11"],
+                    "last_updated": "2015-03-16T10:10:02Z"
+                },
+                {
+                    "id": "2",
+                    "standard": "IEC_62196_T2",
+                    "format": "SOCKET",
+                    "power_type": "AC_3_PHASE",
+                    "max_voltage": 220,
+                    "max_amperage": 16,
+                    "tariff_ids": ["13"],
+                    "last_updated": "2015-03-18T08:12:01Z"
+                }
+            ],
+            "physical_reference": "1",
+            "floor_level": "-1",
+            "last_updated": "2015-06-28T08:12:01Z"
+        },
+                {
+                    "uid": "3257",
+                    "evse_id": "BE*BEC*E041503002",
+                    "status": "RESERVED",
+                    "capabilities": [
+                        "RESERVABLE"
+                    ],
+                    "connectors": [
+                        {
+                            "id": "1",
+                            "standard": "IEC_62196_T2",
+                            "format": "SOCKET",
+                            "power_type": "AC_3_PHASE",
+                            "max_voltage": 220,
+                            "max_amperage": 16,
+                            "tariff_ids": ["12"],
+                            "last_updated": "2015-06-29T20:39:09Z"
+                        }
+                    ],
+                    "physical_reference": "2",
+                    "floor_level": "-2",
+                    "last_updated": "2015-06-29T20:39:09Z"
+                }
+            ],
+            "operator": {
+                "name": "BeCharged"
+            },
+            "time_zone": "Europe/Brussels",
+            "last_updated": "2015-06-29T20:39:09Z"
+        }
+
+        location = Location(**data)
+        assert validator(location) is None

@@ -3,7 +3,7 @@ from typing import Optional, List
 
 from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorFormat, PowerType, TariffType, DayOfWeek, \
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
-    CdrDimensionType, VersionNumber
+    CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility
 
 
 @dataclass(frozen=True)
@@ -37,8 +37,8 @@ class CdrLocation:
 
 @dataclass(frozen=True)
 class DisplayText:
-    language: str = field(metadata={"length": 2})  # string(2) Language Code ISO 639-1
-    text: str = field(metadata={"length": 512})  # string(512) No markup, html etc allowed
+    language: str  # string(2) Language Code ISO 639-1
+    text: str  # string(512) No markup, html etc allowed
 
 
 @dataclass(frozen=True)
@@ -99,8 +99,8 @@ class EnvironmentalImpact:
 @dataclass(frozen=True)
 class EnergyMix:
     is_green_energy: bool
-    energy_sources: List[EnergySource]
-    environ_impact: List[EnvironmentalImpact]
+    energy_sources: List[EnergySource] = field(default_factory=list)
+    environ_impact: List[EnvironmentalImpact] = field(default_factory=list)
     supplier_name: Optional[str] = None # string(64)
     energy_product_name: Optional[str] = None # string(64)
 
@@ -113,11 +113,11 @@ class Tariff:
     currency: str  # string(3)  ISO-4217 code of the currency of this tariff.
     last_updated: str
     type: Optional[TariffType] = None
-    tariff_alt_text: List[DisplayText] = field(default_factory=list) # * Cardinality
+    tariff_alt_text: List[DisplayText] = field(default_factory=list)  # * Cardinality
     tariff_alt_url: Optional[URL] = None
     min_price: Optional[Price] = None
     max_price: Optional[Price] = None
-    elements: TariffElement = field(default_factory=list) # + Cardinality
+    elements: TariffElement = field(default_factory=list)  # + Cardinality
     start_date_time: Optional[str] = None  # UTC
     end_date_time: Optional[str] = None  # UTC
     energy_mix: Optional[EnergyMix] = None
@@ -131,7 +131,7 @@ class CdrDimension:
 
 @dataclass(frozen=True)
 class ChargingPeriod:
-    start_date_time: str # use a proper str class
+    start_date_time: str  # use a proper str class
     dimensions: CdrDimension  # + Cardinality
     tariff_id: str  # CiString(36)
 
@@ -164,11 +164,11 @@ class CDR:
     last_updated: str  # DateTime
     cdr_location: CdrLocation
     currency: str  # str(3) Currency of the CDR in ISO 4217 Code.
-    tariffs: List[Tariff]
-    charging_periods: List[ChargingPeriod] # +  cardinality
     total_cost: Price
     total_energy: float # number
     total_time: float # number
+    tariffs: List[Tariff] = field(default_factory=list)
+    charging_periods: List[ChargingPeriod] = field(default_factory=list)  # +  cardinality
     session_id: Optional[str] = None  # CiString(36). Can be omitted if the CPO has not implemented the Sessions module or the CDR is a result of a reservation that never became a charging session (tehrefore no OCPI session)
     authorization_reference: Optional[str] = None  # CiString(36)
     meter_id: Optional[str] = None  # str(255)
@@ -188,5 +188,127 @@ class CDR:
 @dataclass
 class Version:
     version: VersionNumber
-    url: URL
+    url: str  # Url
+
+@dataclass
+class PublishTokenType:
+    uid: Optional[str] = None  # CiString(26)
+    type: Optional[TokenType] = None
+    visual_number: Optional[str] = None  # str(64)
+    issuer: Optional[str] = None # str(64)
+    group_id: Optional[str] = None  # CiString(36)
+
+
+@dataclass
+class AdditionalGeoLocation:
+    latitude: str  # str 10  pattern:  -?[0-9]{1,2}\.[0-9]{5,7}
+    longitude: str  # str(11) pattern:  -?[0-9]{1,3}\.[0-9]{5,7}
+    name: DisplayText
+
+
+@dataclass
+class StatusSchedule:
+    period_begin: str  # datetime str(25)
+    status: Status
+    period_end: Optional[str] = None  # datetime str(25)
+
+
+@dataclass
+class Connector:
+    id: str  # CiString(36)
+    standard: ConnectorType
+    format: ConnectorFormat
+    power_type: PowerType
+    max_voltage: int
+    max_amperage: int
+    tariff_ids: List[str]  # CiString(36)
+    last_updated: str  # datetime str(25)
+    max_electric_power: Optional[int] = None
+    terms_and_conditions: Optional[str] = None # URL
+
+
+@dataclass
+class Image:
+    url: str  # URL
+    category: ImageCategory
+    type: str  # CiString(4)
+    thumbnail: Optional[str] = None  # URL
+    width: Optional[int] = None  # int(5) can't check 5 in json
+    height: Optional[int] = None  # int(5)
+
+
+@dataclass
+class EVSE:
+    uid: str  # CiString(36)
+    status: Status
+    last_updated: str  # str(25)
+    status_schedule: List[StatusSchedule] = field(default_factory=list)
+    capabilities: List[Capability] = field(default_factory=list)
+    directions: List[DisplayText] = field(default_factory=list)
+    parking_restrictions: List[ParkingRestriction] = field(default_factory=list)
+    images: List[Image] = field(default_factory=list)
+    evse_id: Optional[str] = None  # CiString(48)
+    floor_level: Optional[str] = None  # str(4)
+    coordinates: Optional[GeoLocation] = None
+    physical_reference: Optional[str] = None  # str(16)
+    connectors: List[Connector] = field(default_factory=list)  # + cardinality
+
+
+@dataclass
+class BusinessDetails:
+    name: str  # str(100)
+    website: Optional[str] = None  # Url
+    logo: Optional[Image] = None
+
+
+@dataclass
+class RegularHours:
+    weekday: int  # int(1) Monday (1) till Sunday (7)
+    period_begin: str  # str(5)  pattern ([0-1][0-9]|2[0-3]):[0-5][0-9]
+    period_end: str  # str(5)    pattern ([0-1][0-9]|2[0-3]):[0-5][0-9] (must be later than period begin)
+
+
+@dataclass
+class ExceptionalPeriod:
+    period_begin: str  # datetime str(25)
+    period_end: str  # datetime str(25)
+
+
+@dataclass
+class Hours:
+    twentyfourseven: bool
+    regular_hours: List[RegularHours] = field(default_factory=list)
+    exceptional_openings: List[ExceptionalPeriod] = field(default_factory=list)
+    exceptional_closings: List[ExceptionalPeriod] = field(default_factory=list)
+
+
+@dataclass
+class Location:
+    country_code: str  # CiString(2) ISO-3166 alpha-2 country code of the CPO that 'owns' this Location.
+    party_id: str  # CiString(3) ID of the CPO that 'owns' this Location (following the ISO-15118 standard).
+    id: str  # CiString(36)
+    publish: bool  # When this is set to false, only tokens identified in the field: publish_allowed_to are allowed to be shown this Location. When the same location has EVSEs that may be published and may not be published, two 'Locations' should be created.
+    address: str  # str(45)
+    city: str  # str(45)
+    country: str  # str(3) ISO 3166-1 alpha-3 code for the country of this location.
+    coordinates: GeoLocation
+    last_updated: str  # str(25)
+    time_zone: str  # str(255)
+    publish_allowed_to: List[PublishTokenType] = field(default_factory=list)  # This field may only be used when the publish field is set to false. Only owners of Tokens that match all the set fields of one PublishToken in the list are allowed to be shown this location.
+    related_locations: List[AdditionalGeoLocation] = field(default_factory=list)
+    evses: List[EVSE] = field(default_factory=list)
+    directions: List[DisplayText] = field(default_factory=list)
+    facilities: List[Facility] = field(default_factory=list)
+    energy_mix: Optional[EnergyMix] = None
+    opening_times: Optional[Hours] = None
+    charging_when_closed: Optional[bool] = None
+    images: List[Image] = field(default_factory=list)
+    parking_type: Optional[ParkingType] = None
+    operator: Optional[BusinessDetails] = None
+    suboperator: Optional[BusinessDetails] = None
+    owner: Optional[BusinessDetails] = None
+    name: Optional[str] = None  # str(255)
+    postal_code: Optional[str] = None  # str(10)
+    state: Optional[str] = None # str(20)
+
 

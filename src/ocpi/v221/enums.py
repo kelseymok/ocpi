@@ -123,3 +123,81 @@ class VersionNumber(str, Enum):
     _2_1_1 = "2.1.1"
     _2_2 = "2.2"
     _2_2_1 = "2.2.1"
+
+
+class ParkingType(str, Enum):
+    along_motorway = "ALONG_MOTORWAY"
+    parking_garage = "PARKING_GARAGE"
+    parking_lot = "PARKING_LOT"
+    on_driveway = "ON_DRIVEWAY"
+    on_street = "ON_STREET"
+    underground_garage = "UNDERGROUND_GARAGE"
+
+
+class Status(str, Enum):
+    available = "AVAILABLE"
+    blocked = "BLOCKED"
+    charging = "CHARGING"
+    inoperative = "INOPERATIVE"
+    outoforder = "OUTOFORDER"
+    planned = "PLANNED"
+    removed = "REMOVED"
+    reserved = "RESERVED"
+    unknown = "UNKNOWN"
+
+
+class Capability(str, Enum):
+    charging_profile_capable = "CHARGING_PROFILE_CAPABLE"
+    charging_preferences_capable = "CHARGING_PREFERENCES_CAPABLE"
+    chip_card_support = "CHIP_CARD_SUPPORT"
+    contactless_card_support = "CONTACTLESS_CARD_SUPPORT"
+    credit_card_payable = "CREDIT_CARD_PAYABLE"
+    debit_card_payable = "DEBIT_CARD_PAYABLE"
+    ped_terminal = "PED_TERMINAL"
+    remote_start_stop_capable = "REMOTE_START_STOP_CAPABLE"
+    reservable = "RESERVABLE"
+    rfid_reader = "RFID_READER"
+    start_session_connector_required = "START_SESSION_CONNECTOR_REQUIRED"
+    token_group_capable = "TOKEN_GROUP_CAPABLE"
+    unlock_capable = "UNLOCK_CAPABLE"
+
+
+class ParkingRestriction(str, Enum):
+    ev_only = "EV_ONLY"
+    plugged = "PLUGGED"
+    disabled = "DISABLED"
+    customers = "CUSTOMERS"
+    motorcycles = "MOTORCYCLES"
+
+
+class ImageCategory(str, Enum):
+    charger = "CHARGER"
+    entrance = "ENTRANCE"
+    location = "LOCATION"
+    network = "NETWORK"
+    operator = "OPERATOR"
+    other = "OTHER"
+    owner = "OWNER"
+
+
+class Facility:
+    hotel = "HOTEL"
+    restaurant = "RESTAURANT"
+    cafe = "CAFE"
+    mall = "MALL"
+    supermarket = "SUPERMARKET"
+    sport = "SPORT"
+    recreation_area = "RECREATION_AREA"
+    nature = "NATURE"
+    museum = "MUSEUM"
+    bike_sharing = "BIKE_SHARING"
+    bus_stop = "BUS_STOP"
+    taxi_stand = "TAXI_STAND"
+    tram_stop = "TRAM_STOP"
+    metro_station = "METRO_STATION"
+    train_station = "TRAIN_STATION"
+    airport = "AIRPORT"
+    parking_lot = "PARKING_LOT"
+    carpool_parking = "CARPOOL_PARKING"
+    fuel_station = "FUEL_STATION"
+    wifi = "WIFI"
