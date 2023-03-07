@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "SignedValue",
+    "type": "object",
+    "properties": {
+        "nature": {
+            "type": "string",
+            "maxLength": 32
+        },
+        "plain_data": {
+            "type": "string",
+            "maxLength": 512
+        },
+        "signed_data": {
+            "type": "string",
+            "maxLength": 512
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "nature",
+        "plain_data",
+        "signed_data"
+    ]
+}
