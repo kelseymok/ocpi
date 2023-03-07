@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Tariff",
+    "type": "object",
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "id": {
+            "type": "string",
+            "maxLength": 36
+        },
+      "currency": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "AD_HOC_PAYMENT",
+                "PROFILE_CHEAP",
+                "PROFILE_FAST",
+                "PROFILE_GREEN",
+                "REGULAR"
+            ]
+        },
+        "tariff_alt_text": {
+            "type": "array",
+            "maxLength": 1,
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/DisplayText.json"
+            }
+        },
+        "tariff_alt_url": {
+              "type": "object",
+              "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/URL.json"
+        },
+        "min_price": {
+              "type": "object",
+              "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "max_price": {
+              "type": "object",
+              "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "elements": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/TariffElement.json"
+            }
+        },
+        "start_date_time": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "end_date_time": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "energy_mix": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/EnergyMix.json"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "country_code",
+        "party_id",
+        "id",
+        "currency",
+        "last_updated"
+    ]
+}
