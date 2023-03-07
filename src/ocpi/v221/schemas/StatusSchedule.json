@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "StatusSchedule",
+    "type": "object",
+    "properties": {
+        "period_begin": {
+            "type": "string",
+            "maxLength": 25,
+            "format": "date-time"
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "AVAILABLE",
+                "BLOCKED",
+                "CHARGING",
+                "INOPERATIVE",
+                "OUTOFORDER",
+                "PLANNED",
+                "REMOVED",
+                "RESERVED",
+                "UNKNOWN"
+            ]
+        },
+        "period_end": {
+            "type": "string",
+            "maxLength": 25,
+            "format": "date-time"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "period_begin",
+        "status"
+    ]
+}
