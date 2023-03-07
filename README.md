@@ -2,7 +2,7 @@
 
 This repository contains JSON Schemas (to validate against as a contract test) and Python dataclasses to build OCPI types.
 
-v2.2.1 Modules
+## v2.2.1 Modules
 - [ ] Versions
 - [ ] Credentials
 - [ ] Locations
