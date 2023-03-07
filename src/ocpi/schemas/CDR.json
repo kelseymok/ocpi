@@ -1,0 +1,151 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "CDR",
+    "type": "object",
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "id": {
+            "type": "string",
+            "maxLength": 39
+        },
+        "start_date_time": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 25
+        },
+        "end_date_time": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 25
+        },
+        "session_id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "cdr_token": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/CdrToken.json"
+        },
+        "auth_method": {
+           "type": "string",
+            "enum": [
+                "AUTH_REQUEST",
+                "COMMAND",
+                "WHITELIST"
+            ]
+        },
+        "authorization_reference": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "cdr_location": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/CdrLocation.json"
+        },
+        "meter_id": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "currency": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "tariffs": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Tariff.json"
+            }
+        },
+        "charging_periods": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/ChargingPeriod.json"
+            }
+        },
+        "signed_data": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/SignedData.json"
+        },
+        "total_cost": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "total_fixed_cost": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "total_energy": {
+            "type": "number"
+        },
+        "total_energy_cost": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "total_time": {
+            "type": "number"
+        },
+        "total_time_cost": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "total_parking_time": {
+            "type": "number"
+        },
+        "total_parking_cost": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "total_reservation_cost": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/Price.json"
+        },
+        "remark": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "invoice_reference_id" : {
+            "type": "string",
+            "maxLength": 39
+        },
+        "credit": {
+            "type": "boolean"
+        },
+        "credit_reference_id": {
+            "type": "string",
+            "maxLength": 39
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 25
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "country_code",
+        "party_id",
+        "id",
+        "start_date_time",
+        "end_date_time",
+        "cdr_token",
+        "auth_method",
+        "last_updated",
+        "cdr_location",
+        "currency",
+        "tariffs",
+        "charging_periods",
+        "total_cost",
+        "total_energy",
+        "total_time"
+    ]
+}
