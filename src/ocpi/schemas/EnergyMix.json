@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "EnergyMix",
+    "type": "object",
+    "properties": {
+        "is_green_energy": {
+            "type": "boolean"
+        },
+        "energy_sources": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/EnergySource.json"
+            }
+        },
+        "environ_impact": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/schemas/EnvironmentalImpact.json"
+            }
+        },
+        "supplier_name": {
+            "type": "string",
+            "maxLength": 64
+        },
+        "energy_product_name": {
+            "type": "string",
+            "maxLength": 64
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "is_green_energy",
+        "energy_sources",
+        "environ_impact"
+    ]
+}
