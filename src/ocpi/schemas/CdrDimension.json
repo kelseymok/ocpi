@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "CdrDimension",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": [
+                "CURRENT",
+                "ENERGY",
+                "ENERGY_EXPORT",
+                "ENERGY_IMPORT",
+                "MAX_CURRENT",
+                "MIN_CURRENT",
+                "MAX_POWER",
+                "MIN_POWER",
+                "PARKING_TIME",
+                "POWER",
+                "RESERVATION_TIME",
+                "STATE_OF_CHARGE",
+                "TIME"
+            ]
+        },
+        "volume": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "volume"
+    ]
+}
