@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "EnergySource",
+    "type": "object",
+    "properties": {
+        "source": {
+            "type": "string",
+            "enum": [
+                "NUCLEAR",
+                "GENERAL_FOSSIL",
+                "COAL",
+                "GAS",
+                "GENERAL_GREEN",
+                "SOLAR",
+                "WIND",
+                "WATER"
+            ]
+        },
+        "percentage": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "source",
+        "percentage"
+    ]
+}

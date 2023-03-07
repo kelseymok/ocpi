@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "EnvironmentalImpact",
+    "type": "object",
+    "properties": {
+        "category": {
+            "type": "string",
+            "enum": [
+                "NUCLEAR_WASTE",
+                "CARBON_DIOXIDE"
+            ]
+        },
+        "amount": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "category",
+        "amount"
+    ]
+}
