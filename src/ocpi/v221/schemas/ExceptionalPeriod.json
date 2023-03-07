@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ExceptionalPeriod",
+    "type": "object",
+    "properties": {
+        "period_begin": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 25
+        },
+        "period_end": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 25
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "period_begin",
+        "period_end"
+    ]
+}
