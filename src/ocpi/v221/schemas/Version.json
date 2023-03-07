@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Version",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "string",
+            "enum": [
+                "2.0",
+                "2.1",
+                "2.1.1",
+                "2.2",
+                "2.2.1"
+            ]
+        },
+        "url": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "version",
+        "url"
+    ]
+}

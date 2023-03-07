@@ -299,3 +299,11 @@ class TestTypes:
         }
         cdr = CDR(**data)
         assert validator(cdr) is None
+
+    def test_version(self):
+        data = {
+            "version": "2.2",
+            "url": "https://www.server.com/ocpi/2.1.1/"
+        }
+        version = Version(**data)
+        assert validator(version) is None

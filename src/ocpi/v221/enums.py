@@ -116,3 +116,10 @@ class CdrDimensionType(str, Enum):
     state_of_charge = "STATE_OF_CHARGE"
     time = "TIME"
 
+
+class VersionNumber(str, Enum):
+    _2_0 = "2.0"
+    _2_1 = "2.1"
+    _2_1_1 = "2.1.1"
+    _2_2 = "2.2"
+    _2_2_1 = "2.2.1"

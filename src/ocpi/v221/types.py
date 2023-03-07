@@ -2,8 +2,8 @@ from dataclasses import dataclass, field
 from typing import Optional, List
 
 from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorFormat, PowerType, TariffType, DayOfWeek, \
-    ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, CdrDimensionType
-
+    ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
+    CdrDimensionType, VersionNumber
 
 
 @dataclass(frozen=True)
@@ -185,6 +185,8 @@ class CDR:
     credit_reference_id: Optional[str] = None  # CiString(39)
 
 
-
-
+@dataclass
+class Version:
+    version: VersionNumber
+    url: URL
 
