@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ActiveChargingProfile",
+    "type": "object",
+    "properties": {
+        "start_date_time": {
+            "type": "string",
+            "maxLength": 25
+        },
+        "charging_profile": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/ChargingProfile.json"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "start_date_time",
+        "charging_profile"
+    ]
+}
