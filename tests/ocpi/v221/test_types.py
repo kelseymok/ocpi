@@ -688,3 +688,55 @@ class TestTypes:
             connector_id="d3a9ed02-81cf-4d1c-b96c-de1023875fd1"
         )
         assert validator(unlock_connector) is None
+
+    def test_charging_profile(self):
+        charging_profile = ChargingProfile(
+            start_date_time="2023-01-01T09:00:00Z",
+            charging_rate_unit=ChargingRateUnit.w
+        )
+        assert validator(charging_profile) is None
+
+    def test_active_charging_profile(self):
+        active_charging_profile = ActiveChargingProfile(
+            start_date_time="2023-01-01T09:00:00Z",
+            charging_profile=ChargingProfile(
+                start_date_time="2023-01-01T09:00:00Z",
+                charging_rate_unit=ChargingRateUnit.w
+            )
+        )
+        assert validator(active_charging_profile) is None
+
+    def test_active_charging_profile_result(self):
+        active_charging_profile_result = ActiveChargingProfileResult(
+            result=ChargingProfileResultType.accepted,
+            profile=ActiveChargingProfile(
+                start_date_time="2023-01-01T09:00:00Z",
+                charging_profile=ChargingProfile(
+                    start_date_time="2023-01-01T09:00:00Z",
+                    charging_rate_unit=ChargingRateUnit.w
+                )
+            )
+        )
+        assert validator(active_charging_profile_result) is None
+
+    def test_charging_profile_result(self):
+        charging_profile_result = ChargingProfileResult(
+            result=ChargingProfileResultType.accepted
+        )
+        assert validator(charging_profile_result) is None
+
+    def test_clear_profile_result(self):
+        clear_profile_result = ClearProfileResult(
+            result=ChargingProfileResultType.accepted
+        )
+        assert validator(clear_profile_result) is None
+
+    def test_set_charging_profile(self):
+        set_charging_profile = SetChargingProfile(
+            charging_profile=ChargingProfile(
+                start_date_time="2023-01-01T09:00:00Z",
+                charging_rate_unit=ChargingRateUnit.w
+            ),
+            response_url="https://example.com"
+        )
+        assert validator(set_charging_profile) is None

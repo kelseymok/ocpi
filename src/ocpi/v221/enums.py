@@ -258,3 +258,22 @@ class CommandType(str, Enum):
     start_session = "START_SESSION"
     stop_session = "STOP_SESSION"
     unlock_connector = "UNLOCK_CONNECTOR"
+
+
+class ChargingRateUnit(str, Enum):
+    w = "W"
+    a = "A"
+
+
+class ChargingProfileResponseType(str, Enum):
+    accepted = "ACCEPTED"
+    not_supported = "NOT_SUPPORTED"
+    rejected = "REJECTED"
+    too_often = "TOO_OFTEN"
+    unknown_seession = "UNKNOWN_SESSION"
+
+
+class ChargingProfileResultType(str, Enum):
+    accepted = "ACCEPTED"
+    rejected = "REJECTED"
+    unknown = "UNKNOWN"

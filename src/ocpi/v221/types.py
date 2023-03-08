@@ -4,7 +4,8 @@ from typing import Optional, List
 from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorFormat, PowerType, TariffType, DayOfWeek, \
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
     CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility, \
-    AllowedType, WhitelistType, ProfileType, SessionStatus, CommandResponseType, CommandResultType
+    AllowedType, WhitelistType, ProfileType, SessionStatus, CommandResponseType, CommandResultType, ChargingRateUnit, \
+    ChargingProfileResultType, ChargingProfileResponseType
 
 
 @dataclass(frozen=True)
@@ -386,6 +387,7 @@ class CommandResponse:
     timeout: int
     message: List[DisplayText] = field(default_factory=list)
 
+
 @dataclass(frozen=True)
 class CommandResult:
     result: CommandResultType
@@ -401,6 +403,7 @@ class ReserveNow:
     location_id: str  # CiString(36)
     evse_uid: Optional[str]  # CiString(36)
     authorization_reference: Optional[str] # CiString(36)
+
 
 @dataclass(frozen=True)
 class StartSession:
@@ -424,3 +427,52 @@ class UnlockConnector:
     location_id: str  # CiString(36)
     evse_uid: str  # CiString(36)
     connector_id: str  # CiString(36)
+
+
+@dataclass(frozen=True)
+class ChargingProfileResponse:
+    result: ChargingProfileResponseType
+    timeout: int
+
+
+@dataclass(frozen=True)
+class ChargingProfilePeriod:
+    start_period: int # seconds
+    limit: float
+
+
+@dataclass(frozen=True)
+class ChargingProfile:
+    charging_rate_unit: ChargingRateUnit
+    start_date_time: Optional[str] = None  # datetime str(25)
+    duration: Optional[int] = None
+    min_charging_rate: Optional[float] = None
+    charging_profile_period: List[ChargingProfilePeriod] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class ActiveChargingProfile:
+    start_date_time: str  # datetime str(25)
+    charging_profile: ChargingProfile
+
+
+@dataclass(frozen=True)
+class ActiveChargingProfileResult:
+    result: ChargingProfileResultType
+    profile: Optional[ActiveChargingProfile]
+
+
+@dataclass(frozen=True)
+class ChargingProfileResult:
+    result: ChargingProfileResultType
+
+
+@dataclass(frozen=True)
+class ClearProfileResult:
+    result: ChargingProfileResultType
+
+
+@dataclass(frozen=True)
+class SetChargingProfile:
+    charging_profile: ChargingProfile
+    response_url: str

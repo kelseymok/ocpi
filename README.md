@@ -11,7 +11,7 @@ This repository contains JSON Schemas (to validate against as a contract test) a
 - [x] Tariffs
 - [x] Tokens
 - [x] Commands
-- [ ] ChargingProfiles
+- [x] ChargingProfiles
 - [ ] HubClientInfo
 
 ## Example Usage
