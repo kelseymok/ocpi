@@ -582,3 +582,109 @@ class TestTypes:
         }
         session = Session(**data)
         assert validator(session) is None
+
+    def test_cancel_reservation(self):
+        data = {
+            "response_url": "http://example.com",
+            "reservation_id": "cfbd1b5c-604e-4590-93d7-a0a316681e39"
+        }
+        cancel_reservation = CancelReservation(**data)
+        assert validator(cancel_reservation) is None
+
+    def test_command_response(self):
+        command_response = CommandResponse(
+            result = CommandResponseType.accepted,
+            timeout=3600,
+            message=[DisplayText(
+                language="EN",
+                text="some command"
+            )]
+        )
+        assert validator(command_response) is None
+
+    def test_command_result(self):
+        command_result = CommandResult(
+            result=CommandResultType.accepted,
+            message=[DisplayText(
+                language="EN",
+                text="srted"
+            )]
+        )
+        assert validator(command_result) is None
+
+    def test_reserve_now(self):
+        token_data = {
+            "country_code": "DE",
+            "party_id": "TNM",
+            "uid": "12345678905880",
+            "type": "RFID",
+            "contract_id": "DE8ACC12E46L89",
+            "visual_number": "DF000-2001-8999-1",
+            "issuer": "TheNewMotion",
+            "group_id": "DF000-2001-8999",
+            "valid": True,
+            "whitelist": "ALLOWED",
+            "language": "it",
+            "default_profile_type": "GREEN",
+            "energy_contract": {
+                "supplier_name": "Greenpeace Energy eG",
+                "contract_id": "0123456789"
+            },
+            "last_updated": "2018-12-10T17:25:10Z"
+        }
+        token = Token(**token_data)
+        reserve_now = ReserveNow(
+            response_url="https://example.com",
+            token=token,
+            expiry_date="2023-01-01T09:00:00Z",
+            reservation_id="d3a9ed02-81cf-4d1c-b96c-de1023875fd1",
+            location_id="e352a792-6cff-4253-87f1-048bcc89a01b",
+            evse_uid="4d61a079-19bc-410f-8090-d6fc898986e2",
+            authorization_reference="73638069-71ee-4d85-85f4-425c6a2ac30c"
+        )
+        assert validator(reserve_now) is None
+
+    def test_start_session(self):
+        token_data = {
+            "country_code": "DE",
+            "party_id": "TNM",
+            "uid": "12345678905880",
+            "type": "RFID",
+            "contract_id": "DE8ACC12E46L89",
+            "visual_number": "DF000-2001-8999-1",
+            "issuer": "TheNewMotion",
+            "group_id": "DF000-2001-8999",
+            "valid": True,
+            "whitelist": "ALLOWED",
+            "language": "it",
+            "default_profile_type": "GREEN",
+            "energy_contract": {
+                "supplier_name": "Greenpeace Energy eG",
+                "contract_id": "0123456789"
+            },
+            "last_updated": "2018-12-10T17:25:10Z"
+        }
+        token = Token(**token_data)
+        start_session = StartSession(
+            response_url="https://example.com",
+            token=token,
+            location_id="e352a792-6cff-4253-87f1-048bcc89a01b",
+            authorization_reference="73638069-71ee-4d85-85f4-425c6a2ac30c"
+        )
+        assert validator(start_session) is None
+
+    def test_stop_session(self):
+        stop_session = StopSession(
+            response_url="https://example.com",
+            session_id="e352a792-6cff-4253-87f1-048bcc89a01b",
+        )
+        assert validator(stop_session) is None
+
+    def test_unlock_connector(self):
+        unlock_connector = UnlockConnector(
+            response_url="https://example.com",
+            location_id="e352a792-6cff-4253-87f1-048bcc89a01b",
+            evse_uid="4d61a079-19bc-410f-8090-d6fc898986e2",
+            connector_id="d3a9ed02-81cf-4d1c-b96c-de1023875fd1"
+        )
+        assert validator(unlock_connector) is None

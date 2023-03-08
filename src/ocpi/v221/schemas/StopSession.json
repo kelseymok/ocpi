@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "StopSession",
+    "type": "object",
+    "properties": {
+        "response_url": {
+            "type": "string"
+        },
+        "session_id": {
+            "type": "string",
+            "maxLength": 36
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "response_url",
+        "session_id"
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "UnlockConnector",
+    "type": "object",
+    "properties": {
+        "response_url": {
+            "type": "string"
+        },
+        "location_id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "evse_uid": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "connector_id": {
+            "type": "string",
+            "maxLength": 36
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "response_url",
+        "location_id",
+        "evse_uid",
+        "connector_id"
+    ]
+}

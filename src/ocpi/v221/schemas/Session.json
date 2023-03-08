@@ -17,7 +17,8 @@
         },
         "start_date_time": {
             "type": "string",
-            "maxLength": 25
+            "maxLength": 25,
+            "format": "date-time"
         },
         "kwh": {
             "type": "number"

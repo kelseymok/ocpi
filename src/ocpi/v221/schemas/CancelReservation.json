@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "CancelReservation",
+    "type": "object",
+    "properties": {
+        "response_url": {
+            "type": "string"
+        },
+        "reservation_id": {
+            "type": "string",
+            "maxLength": 36
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "response_url",
+        "reservation_id"
+    ]
+}

@@ -10,7 +10,7 @@ This repository contains JSON Schemas (to validate against as a contract test) a
 - [x] CDRs
 - [x] Tariffs
 - [x] Tokens
-- [ ] Commands
+- [x] Commands
 - [ ] ChargingProfiles
 - [ ] HubClientInfo
 
@@ -40,3 +40,4 @@ cdr_location = CdrLocation(
 - [ ] Enforcing of ISO-standards in data classes (helpers to generate)
 - [ ] Enforcing of string max lengths in data classes
 - [ ] Enforcing of datetime formats in data classes (helpers to generate)
+- [ ] Enforcing of URL type

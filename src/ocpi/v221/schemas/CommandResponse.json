@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "CommandResponse",
+    "type": "object",
+    "properties": {
+        "result": {
+            "type": "string",
+            "enum": [
+                "NOT_SUPPORTED",
+                "REJECTED",
+                "ACCEPTED",
+                "UNKNOWN_SESSION"
+            ]
+        },
+        "timeout": {
+            "type": "integer"
+        },
+        "message": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/DisplayText.json"
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "result",
+        "timeout"
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "StartSession",
+    "type": "object",
+    "properties": {
+        "response_url": {
+            "type": "string"
+        },
+        "token": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Token.json"
+        },
+        "location_id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "evse_uid": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "connector_id": {
+            "type": "string",
+            "maxLength": 25
+        },
+        "authorization_reference": {
+            "type": "string",
+            "maxLength": 36
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "response_url",
+        "token",
+        "location_id"
+    ]
+}

@@ -4,7 +4,7 @@ from typing import Optional, List
 from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorFormat, PowerType, TariffType, DayOfWeek, \
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
     CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility, \
-    AllowedType, WhitelistType, ProfileType, SessionStatus
+    AllowedType, WhitelistType, ProfileType, SessionStatus, CommandResponseType, CommandResultType
 
 
 @dataclass(frozen=True)
@@ -372,3 +372,55 @@ class Session:
     meter_id: Optional[str] = None  # string(255)
     charging_periods: List[ChargingPeriod] = field(default_factory=list)
     total_cost: Optional[Price] = None
+
+
+@dataclass(frozen=True)
+class CancelReservation:
+    response_url: str  # url
+    reservation_id: str  # CiString(36)
+
+
+@dataclass(frozen=True)
+class CommandResponse:
+    result: CommandResponseType
+    timeout: int
+    message: List[DisplayText] = field(default_factory=list)
+
+@dataclass(frozen=True)
+class CommandResult:
+    result: CommandResultType
+    message: List[DisplayText] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class ReserveNow:
+    response_url: str # url
+    token: Token
+    expiry_date: str  # datetime str(25)
+    reservation_id: str  # CiString(36)
+    location_id: str  # CiString(36)
+    evse_uid: Optional[str]  # CiString(36)
+    authorization_reference: Optional[str] # CiString(36)
+
+@dataclass(frozen=True)
+class StartSession:
+    response_url: str  # URL
+    token: Token
+    location_id: str  # CiString(36)
+    evse_uid: Optional[str] = None  # CiString(36)
+    connector_id: Optional[str] = None  # CiString(36)
+    authorization_reference: Optional[str] = None # CiString(36)
+
+
+@dataclass(frozen=True)
+class StopSession:
+    response_url: str  # URL
+    session_id: str  # CiString(36)
+
+
+@dataclass(frozen=True)
+class UnlockConnector:
+    response_url: str
+    location_id: str  # CiString(36)
+    evse_uid: str  # CiString(36)
+    connector_id: str  # CiString(36)

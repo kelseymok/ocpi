@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "CommandResult",
+    "type": "object",
+    "properties": {
+        "response_url": {
+            "type": "string"
+        },
+        "token": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Token.json"
+        },
+        "expiry_date": {
+            "type": "string",
+            "maxLength": 25
+        },
+        "reservation_id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "location_id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "evse_uid": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "authorization_reference": {
+            "type": "string",
+            "maxLength": 36
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "response_url",
+        "token",
+        "expiry_date",
+        "reservation_id",
+        "location_id"
+    ]
+}
