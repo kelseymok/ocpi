@@ -8,7 +8,7 @@ This repository contains JSON Schemas (to validate against as a contract test) a
 - [x] Locations
 - [ ] Sessions
 - [x] CDRs
-- [ ] Tariffs
+- [x] Tariffs
 - [x] Tokens
 - [ ] Commands
 - [ ] ChargingProfiles
