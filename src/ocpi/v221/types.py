@@ -193,7 +193,7 @@ class Endpoint:
     url: str
 
 @dataclass(frozen=True)
-class VersionData:
+class VersionDetailsData:
     version: VersionNumber
     endpoints: List[Endpoint]   # + Cardinality
 

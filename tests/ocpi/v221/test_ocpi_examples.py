@@ -3,7 +3,7 @@ from typing import Optional
 import requests
 import json
 from ocpi.v221.types import CDR, Credentials, EnergyMix, Location, Hours, Session, Tariff, Token, \
-    DisplayText, VersionData
+    DisplayText, VersionDetailsData
 from test_utils import validator
 
 
@@ -127,4 +127,4 @@ class TestOcpiExamples:
         ]
 
         for i in payloads:
-            self._read_and_validate(i, VersionData)
+            self._read_and_validate(i, VersionDetailsData)
