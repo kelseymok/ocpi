@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "EnergyContract",
+    "type": "object",
+    "properties": {
+        "supplier_name": {
+            "type": "string",
+            "maxLength": 64
+        },
+        "contract_id": {
+            "type": "string",
+            "maxLength": 64
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "supplier_name"
+    ]
+}
