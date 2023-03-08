@@ -1,0 +1,4 @@
+pytest
+jsonschema
+requests
+setuptools~=60.2.0

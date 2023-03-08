@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/ocpi.egg-info/PKG-INFO
+src/ocpi.egg-info/SOURCES.txt
+src/ocpi.egg-info/dependency_links.txt
+src/ocpi.egg-info/requires.txt
+src/ocpi.egg-info/top_level.txt
