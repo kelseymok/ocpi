@@ -130,12 +130,12 @@ class TestTypes:
             "elements": [
                 {
                     "price_components": [
-                    {
-                      "type": "ENERGY",
-                      "price": 0.20,
-                      "vat": 20.0,
-                      "step_size": 1
-                    }
+                        {
+                          "type": "ENERGY",
+                          "price": 0.20,
+                          "vat": 20.0,
+                          "step_size": 1
+                        }
                     ],
                     "restrictions": {
                         "max_power": 16.00

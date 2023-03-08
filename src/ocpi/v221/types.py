@@ -350,3 +350,4 @@ class AuthorizationInfo:
     location: Optional[LocationReferences] = None
     authorization_reference: Optional[str] = None # CiString(36)
     info: Optional[DisplayText] = None
+
