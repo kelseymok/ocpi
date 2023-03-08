@@ -1,0 +1,109 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Session",
+    "type": "object",
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "start_date_time": {
+            "type": "string",
+            "maxLength": 25
+        },
+        "kwh": {
+            "type": "number"
+        },
+        "cdr_token": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/CdrToken.json"
+        },
+        "auth_method": {
+            "type": "string",
+            "enum": [
+                "AUTH_REQUEST",
+                "COMMAND",
+                "WHITELIST"
+            ]
+        },
+        "location_id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "evse_uid": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "connector_id": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "currency": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "ACTIVE",
+                "COMPLETED",
+                "INVALID",
+                "PENDING",
+                "RESERVATION"
+            ]
+        },
+        "last_updated": {
+            "type": "string",
+            "maxLength": 25,
+            "format": "date-time"
+        },
+        "end_date_time": {
+            "type": "string",
+            "maxLength": 25,
+            "format": "date-time"
+        },
+        "authorization_reference": {
+            "type": "string",
+            "maxLength": 36
+        },
+        "meter_id": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "charging_periods": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/ChargingPeriod.json"
+            }
+        },
+        "total_cost": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Price.json"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "country_code",
+        "party_id",
+        "id",
+        "start_date_time",
+        "kwh",
+        "cdr_token",
+        "auth_method",
+        "location_id",
+        "evse_uid",
+        "connector_id",
+        "currency",
+        "status",
+        "last_updated"
+    ]
+}
