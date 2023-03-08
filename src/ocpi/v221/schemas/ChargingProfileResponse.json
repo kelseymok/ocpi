@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ChargingProfileResponse",
+    "type": "object",
+    "properties": {
+        "timeout": {
+            "type": "integer"
+        },
+        "result": {
+            "type": "string",
+            "enum": [
+                "ACCEPTED",
+                "NOT_SUPPORTED",
+                "REJECTED",
+                "TOO_OFTEN",
+                "UNKNOWN_SESSION"
+            ]
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "timeout",
+        "result"
+    ]
+}

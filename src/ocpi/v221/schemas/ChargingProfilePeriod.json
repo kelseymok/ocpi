@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ChargingProfilePeriod",
+    "type": "object",
+    "properties": {
+        "start_period": {
+            "type": "integer"
+        },
+        "limit": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "start_period",
+        "limit"
+    ]
+}
