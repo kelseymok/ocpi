@@ -287,3 +287,10 @@ class Role(str, Enum):
     nsp = "NSP"
     other = "OTHER"
     scsp = "SCSP"
+
+
+class ConnectionStatus:
+    connected = "CONNECTED",
+    offline = "OFFLINE"
+    planned = "PLANNED"
+    suspended = "SUSPENDED"

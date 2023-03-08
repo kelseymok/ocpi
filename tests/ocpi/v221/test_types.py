@@ -768,3 +768,14 @@ class TestTypes:
         }
         credentials = Credentials(**data)
         assert validator(credentials) is None
+
+    def test_client_info(self):
+        data = {
+            "party_id": "EXA",
+            "country_code": "NL",
+            "role": "CPO",
+            "status": "CONNECTED",
+            "last_updated": "2023-01-01T09:00:00Z"
+        }
+        client_info = ClientInfo(**data)
+        assert validator(client_info) is None

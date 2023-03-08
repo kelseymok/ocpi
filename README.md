@@ -12,7 +12,8 @@ This repository contains JSON Schemas (to validate against as a contract test) a
 - [x] Tokens
 - [x] Commands
 - [x] ChargingProfiles
-- [ ] HubClientInfo
+- [x] HubClientInfo
+- [ ] OCPI transport types
 
 ## Example Usage
 ```python

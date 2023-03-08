@@ -5,7 +5,7 @@ from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorForma
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
     CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility, \
     AllowedType, WhitelistType, ProfileType, SessionStatus, CommandResponseType, CommandResultType, ChargingRateUnit, \
-    ChargingProfileResultType, ChargingProfileResponseType, Role
+    ChargingProfileResultType, ChargingProfileResponseType, Role, ConnectionStatus
 
 
 @dataclass(frozen=True)
@@ -484,8 +484,19 @@ class CredentialsRole:
     business_details: BusinessDetails
     party_id: str  # CiString(3) CPO, eMSP (or other role) ID of this party (following the ISO-15118 standard).
     country_code: str  # CiString(2) ISO-3166 alpha-2 country code of the country this party is operating in.
+
+
 @dataclass(frozen=True)
 class Credentials:
     token: str  # str(64)
     url: str  # URL
     roles: List[CredentialsRole] = field(default_factory=list)  # + cardinality
+
+
+@dataclass(frozen=True)
+class ClientInfo:
+    party_id: str  # CiString(3) CPO or eMSP ID of this party (following the 15118 ISO standard), as used in the credentials exchange.
+    country_code: str  # CiString(2) ISO-3166 alpha-2 country code of the country this party is operating in.
+    role: Role
+    status: ConnectionStatus
+    last_updated: str  # datetime str(25)

@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ClientInfo",
+    "type": "object",
+    "properties": {
+        "party_id": {
+            "type": "string",
+            "maxLength": 3
+        },
+        "country_code": {
+            "type": "string",
+            "maxLength": 2
+        },
+        "role": {
+            "type": "string",
+            "enum": [
+                "CPO",
+                "EMSP",
+                "HUB",
+                "NAP",
+                "NSP",
+                "OTHER",
+                "SCSP"
+            ]
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "CONNECTED",
+                "OFFLINE",
+                "PLANNED",
+                "SUSPENDED"
+            ]
+        },
+        "last_updated": {
+            "type": "string",
+            "maxLength": 25
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "party_id",
+        "country_code",
+        "role",
+        "status",
+        "last_updated"
+    ]
+}
