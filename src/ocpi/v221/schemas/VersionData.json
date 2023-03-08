@@ -13,13 +13,18 @@
                 "2.2.1"
             ]
         },
-        "url": {
-            "type": "string"
+        "endpoints": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/Endpoint.json"
+            }
         }
     },
     "additionalProperties": false,
     "required": [
         "version",
-        "url"
+        "endpoints"
     ]
 }

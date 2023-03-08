@@ -5,7 +5,7 @@ from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorForma
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
     CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility, \
     AllowedType, WhitelistType, ProfileType, SessionStatus, CommandResponseType, CommandResultType, ChargingRateUnit, \
-    ChargingProfileResultType, ChargingProfileResponseType, Role, ConnectionStatus
+    ChargingProfileResultType, ChargingProfileResponseType, Role, ConnectionStatus, ModuleID, InterfaceRole
 
 
 @dataclass(frozen=True)
@@ -116,7 +116,7 @@ class Tariff:
     last_updated: str
     type: Optional[TariffType] = None
     tariff_alt_text: List[DisplayText] = field(default_factory=list)  # * Cardinality
-    tariff_alt_url: Optional[URL] = None
+    tariff_alt_url: Optional[str] = None  # URL
     min_price: Optional[Price] = None
     max_price: Optional[Price] = None
     elements: TariffElement = field(default_factory=list)  # + Cardinality
@@ -135,7 +135,7 @@ class CdrDimension:
 class ChargingPeriod:
     start_date_time: str  # use a proper str class
     dimensions: CdrDimension  # + Cardinality
-    tariff_id: str  # CiString(36)
+    tariff_id: Optional[str] = None # CiString(36)
 
 
 @dataclass(frozen=True)
@@ -186,11 +186,22 @@ class CDR:
     credit: Optional[bool] = None
     credit_reference_id: Optional[str] = None  # CiString(39)
 
+@dataclass(frozen=True)
+class Endpoint:
+    identifier: ModuleID
+    role: InterfaceRole
+    url: str
+
+@dataclass(frozen=True)
+class VersionData:
+    version: VersionNumber
+    endpoints: List[Endpoint]   # + Cardinality
+
 
 @dataclass(frozen=True)
 class Version:
     version: VersionNumber
-    url: str  # Url
+    url: str   # URL
 
 @dataclass(frozen=True)
 class PublishTokenType:

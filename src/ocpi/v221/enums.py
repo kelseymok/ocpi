@@ -289,8 +289,25 @@ class Role(str, Enum):
     scsp = "SCSP"
 
 
-class ConnectionStatus:
+class ConnectionStatus(str, Enum):
     connected = "CONNECTED",
     offline = "OFFLINE"
     planned = "PLANNED"
     suspended = "SUSPENDED"
+
+
+class ModuleID(str, Enum):
+    cdrs = "cdrs"
+    charging_profiles = "chargingprofiles"
+    commands = "commands",
+    credentials = "credentials"
+    hub_client_info = "hubclientinfo"
+    locations = "locations"
+    sessions = "sessions"
+    tariffs = "tariffs"
+    tokens = "tokens"
+
+
+class InterfaceRole(str, Enum):
+    sender = "SENDER"
+    receiver = "RECEIVER"
