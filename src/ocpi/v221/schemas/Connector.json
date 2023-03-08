@@ -86,7 +86,6 @@
         "power_type",
         "max_voltage",
         "max_amperage",
-        "tariff_ids",
         "last_updated"
     ]
 }
