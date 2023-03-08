@@ -24,7 +24,6 @@
     "additionalProperties": false,
     "required": [
         "start_date_time",
-        "dimensions",
-        "tariff_id"
+        "dimensions"
     ]
 }
