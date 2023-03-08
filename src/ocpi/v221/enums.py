@@ -277,3 +277,13 @@ class ChargingProfileResultType(str, Enum):
     accepted = "ACCEPTED"
     rejected = "REJECTED"
     unknown = "UNKNOWN"
+
+
+class Role(str, Enum):
+    cpo = "CPO"
+    emsp = "EMSP"
+    hub = "HUB"
+    nap = "NAP"
+    nsp = "NSP"
+    other = "OTHER"
+    scsp = "SCSP"

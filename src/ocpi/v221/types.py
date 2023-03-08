@@ -5,7 +5,7 @@ from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorForma
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
     CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility, \
     AllowedType, WhitelistType, ProfileType, SessionStatus, CommandResponseType, CommandResultType, ChargingRateUnit, \
-    ChargingProfileResultType, ChargingProfileResponseType
+    ChargingProfileResultType, ChargingProfileResponseType, Role
 
 
 @dataclass(frozen=True)
@@ -476,3 +476,16 @@ class ClearProfileResult:
 class SetChargingProfile:
     charging_profile: ChargingProfile
     response_url: str
+
+
+@dataclass(frozen=True)
+class CredentialsRole:
+    role: Role
+    business_details: BusinessDetails
+    party_id: str  # CiString(3) CPO, eMSP (or other role) ID of this party (following the ISO-15118 standard).
+    country_code: str  # CiString(2) ISO-3166 alpha-2 country code of the country this party is operating in.
+@dataclass(frozen=True)
+class Credentials:
+    token: str  # str(64)
+    url: str  # URL
+    roles: List[CredentialsRole] = field(default_factory=list)  # + cardinality

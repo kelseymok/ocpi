@@ -740,3 +740,31 @@ class TestTypes:
             response_url="https://example.com"
         )
         assert validator(set_charging_profile) is None
+
+    def test_credentials_role(self):
+        data = {
+            "role": "CPO",
+            "party_id": "EXA",
+            "country_code": "NL",
+            "business_details": {
+                "name": "Example Operator"
+            }
+        }
+        credentials_role = CredentialsRole(**data)
+        assert validator(credentials_role) is None
+
+    def test_credentials(self):
+        data = {
+            "token": "ebf3b399-779f-4497-9b9d-ac6ad3cc44d2",
+            "url": "https://example.com/ocpi/versions/",
+            "roles": [{
+                "role": "CPO",
+                "party_id": "EXA",
+                "country_code": "NL",
+                "business_details": {
+                    "name": "Example Operator"
+                }
+            }]
+        }
+        credentials = Credentials(**data)
+        assert validator(credentials) is None

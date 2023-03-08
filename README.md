@@ -4,7 +4,7 @@ This repository contains JSON Schemas (to validate against as a contract test) a
 
 ## v2.2.1 Modules
 - [x] Versions
-- [ ] Credentials
+- [x] Credentials
 - [x] Locations
 - [x] Sessions
 - [x] CDRs
