@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ChargingProfile",
+    "type": "object",
+    "properties": {
+        "start_date_time": {
+            "type": "string",
+            "maxLength": 25
+        },
+        "duration": {
+            "type": "integer"
+        },
+        "charging_rate_unit": {
+            "type": "string",
+            "enum": [
+                "W",
+                "A"
+            ]
+        },
+        "min_charging_rate": {
+            "type": "number"
+        },
+        "charging_profile_period": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/ChargingProfilePeriod.json"
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "charging_rate_unit"
+    ]
+}
