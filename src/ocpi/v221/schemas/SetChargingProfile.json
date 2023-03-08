@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "SetChargingProfile",
+    "type": "object",
+    "properties": {
+        "charging_profile": {
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/ChargingProfile.json"
+        },
+        "response_url": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "charging_profile",
+        "response_url"
+    ]
+}
