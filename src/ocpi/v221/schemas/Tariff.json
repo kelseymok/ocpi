@@ -43,8 +43,7 @@
             }
         },
         "tariff_alt_url": {
-              "type": "object",
-              "$ref": "https://raw.githubusercontent.com/kelseymok/ocpi/main/src/ocpi/v221/schemas/URL.json"
+            "type": "string"
         },
         "min_price": {
               "type": "object",

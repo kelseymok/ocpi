@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Endpoint",
+    "type": "object",
+    "properties": {
+        "identifier": {
+            "type": "string",
+            "enum": [
+                "cdrs",
+                "chargingprofiles",
+                "commands",
+                "credentials",
+                "hubclientinfo",
+                "locations",
+                "sessions",
+                "tariffs",
+                "tokens"
+            ]
+        },
+        "role": {
+            "type": "string",
+            "enum": [
+                "SENDER",
+                "RECEIVER"
+            ]
+        },
+        "url": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "identifier",
+        "role",
+        "url"
+    ]
+}
