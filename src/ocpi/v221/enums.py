@@ -223,3 +223,11 @@ class ProfileType(str, Enum):
     fast = "FAST"
     green = "GREEN"
     regular = "REGULAR"
+
+
+class SessionStatus(str, Enum):
+    active = "ACTIVE"
+    completed = "COMPLETED"
+    invalid = "INVALID"
+    pending = "PENDING"
+    reservation = "RESERVATION"

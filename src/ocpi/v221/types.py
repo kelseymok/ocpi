@@ -4,7 +4,7 @@ from typing import Optional, List
 from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorFormat, PowerType, TariffType, DayOfWeek, \
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
     CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility, \
-    AllowedType, WhitelistType, ProfileType
+    AllowedType, WhitelistType, ProfileType, SessionStatus
 
 
 @dataclass(frozen=True)
@@ -351,3 +351,24 @@ class AuthorizationInfo:
     authorization_reference: Optional[str] = None # CiString(36)
     info: Optional[DisplayText] = None
 
+
+@dataclass(frozen=True)
+class Session:
+    country_code: str  # CiString(2)
+    party_id: str  # CiString(3)
+    id: str  # CiString(36)
+    start_date_time: str  # datetime str(25)
+    kwh: float
+    cdr_token: CdrToken
+    auth_method: AuthMethod
+    location_id: str  # CiString(36)
+    evse_uid: str  # CiString(36)
+    connector_id: str  # CiString(36)
+    currency: str  # str(3) ISO 4217 code of the currency used for this session.
+    status: SessionStatus
+    last_updated: str  # datetime str(25)
+    end_date_time: Optional[str] = None # datetime str(25)
+    authorization_reference: Optional[str] = None  # CiString(36)
+    meter_id: Optional[str] = None  # string(255)
+    charging_periods: List[ChargingPeriod] = field(default_factory=list)
+    total_cost: Optional[Price] = None

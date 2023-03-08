@@ -6,7 +6,7 @@ This repository contains JSON Schemas (to validate against as a contract test) a
 - [x] Versions
 - [ ] Credentials
 - [x] Locations
-- [ ] Sessions
+- [x] Sessions
 - [x] CDRs
 - [x] Tariffs
 - [x] Tokens
@@ -35,3 +35,8 @@ cdr_location = CdrLocation(
     connector_power_type=PowerType.ac_1_phase
 )
 ```
+
+## Fast-Follow Work
+- [ ] Enforcing of ISO-standards in data classes (helpers to generate)
+- [ ] Enforcing of string max lengths in data classes
+- [ ] Enforcing of datetime formats in data classes (helpers to generate)
