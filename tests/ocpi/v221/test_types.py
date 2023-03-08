@@ -525,3 +525,34 @@ class TestTypes:
 
         location = Location(**data)
         assert validator(location) is None
+
+    def test_energy_contract(self):
+        data = {
+            "supplier_name": "Greenpeace Energy eG",
+            "contract_id": "0123456789"
+        }
+        energy_contract = EnergyContract(**data)
+        assert validator(energy_contract) is None
+
+    def test_token(self):
+        data = {
+            "country_code": "DE",
+            "party_id": "TNM",
+            "uid": "12345678905880",
+            "type": "RFID",
+            "contract_id": "DE8ACC12E46L89",
+            "visual_number": "DF000-2001-8999-1",
+            "issuer": "TheNewMotion",
+            "group_id": "DF000-2001-8999",
+            "valid": True,
+            "whitelist": "ALLOWED",
+            "language": "it",
+            "default_profile_type": "GREEN",
+            "energy_contract": {
+                "supplier_name": "Greenpeace Energy eG",
+                "contract_id": "0123456789"
+            },
+            "last_updated": "2018-12-10T17:25:10Z"
+        }
+        token = Token(**data)
+        assert validator(token) is None

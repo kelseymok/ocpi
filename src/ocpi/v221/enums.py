@@ -180,7 +180,7 @@ class ImageCategory(str, Enum):
     owner = "OWNER"
 
 
-class Facility:
+class Facility(str, Enum):
     hotel = "HOTEL"
     restaurant = "RESTAURANT"
     cafe = "CAFE"
@@ -201,3 +201,25 @@ class Facility:
     carpool_parking = "CARPOOL_PARKING"
     fuel_station = "FUEL_STATION"
     wifi = "WIFI"
+
+
+class AllowedType(str, Enum):
+    allowed = "ALLOWED"
+    blocked = "BLOCKED"
+    expired = "EXPIRED"
+    no_credit = "NO_CREDIT"
+    not_allowed = "NOT_ALLOWED"
+
+
+class WhitelistType(str, Enum):
+    always = "ALWAYS"
+    allowed = "ALLOWED"
+    allowed_offline = "ALLOWED_OFFLINE"
+    never = "NEVER"
+
+
+class ProfileType(str, Enum):
+    cheap = "CHEAP"
+    fast = "FAST"
+    green = "GREEN"
+    regular = "REGULAR"

@@ -3,7 +3,8 @@ from typing import Optional, List
 
 from ocpi.v221.enums import TokenType, AuthMethod, ConnectorType, ConnectorFormat, PowerType, TariffType, DayOfWeek, \
     ReservationRestrictionType, TariffDimensionType, EnergySourceCategory, EnvironmentalImpactCategory, \
-    CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility
+    CdrDimensionType, VersionNumber, ParkingType, Status, Capability, ParkingRestriction, ImageCategory, Facility, \
+    AllowedType, WhitelistType, ProfileType
 
 
 @dataclass(frozen=True)
@@ -185,12 +186,12 @@ class CDR:
     credit_reference_id: Optional[str] = None  # CiString(39)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Version:
     version: VersionNumber
     url: str  # Url
 
-@dataclass
+@dataclass(frozen=True)
 class PublishTokenType:
     uid: Optional[str] = None  # CiString(26)
     type: Optional[TokenType] = None
@@ -199,21 +200,21 @@ class PublishTokenType:
     group_id: Optional[str] = None  # CiString(36)
 
 
-@dataclass
+@dataclass(frozen=True)
 class AdditionalGeoLocation:
     latitude: str  # str 10  pattern:  -?[0-9]{1,2}\.[0-9]{5,7}
     longitude: str  # str(11) pattern:  -?[0-9]{1,3}\.[0-9]{5,7}
     name: DisplayText
 
 
-@dataclass
+@dataclass(frozen=True)
 class StatusSchedule:
     period_begin: str  # datetime str(25)
     status: Status
     period_end: Optional[str] = None  # datetime str(25)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Connector:
     id: str  # CiString(36)
     standard: ConnectorType
@@ -227,7 +228,7 @@ class Connector:
     terms_and_conditions: Optional[str] = None # URL
 
 
-@dataclass
+@dataclass(frozen=True)
 class Image:
     url: str  # URL
     category: ImageCategory
@@ -237,7 +238,7 @@ class Image:
     height: Optional[int] = None  # int(5)
 
 
-@dataclass
+@dataclass(frozen=True)
 class EVSE:
     uid: str  # CiString(36)
     status: Status
@@ -254,27 +255,27 @@ class EVSE:
     connectors: List[Connector] = field(default_factory=list)  # + cardinality
 
 
-@dataclass
+@dataclass(frozen=True)
 class BusinessDetails:
     name: str  # str(100)
     website: Optional[str] = None  # Url
     logo: Optional[Image] = None
 
 
-@dataclass
+@dataclass(frozen=True)
 class RegularHours:
     weekday: int  # int(1) Monday (1) till Sunday (7)
     period_begin: str  # str(5)  pattern ([0-1][0-9]|2[0-3]):[0-5][0-9]
     period_end: str  # str(5)    pattern ([0-1][0-9]|2[0-3]):[0-5][0-9] (must be later than period begin)
 
 
-@dataclass
+@dataclass(frozen=True)
 class ExceptionalPeriod:
     period_begin: str  # datetime str(25)
     period_end: str  # datetime str(25)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Hours:
     twentyfourseven: bool
     regular_hours: List[RegularHours] = field(default_factory=list)
@@ -282,7 +283,7 @@ class Hours:
     exceptional_closings: List[ExceptionalPeriod] = field(default_factory=list)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Location:
     country_code: str  # CiString(2) ISO-3166 alpha-2 country code of the CPO that 'owns' this Location.
     party_id: str  # CiString(3) ID of the CPO that 'owns' this Location (following the ISO-15118 standard).
@@ -312,3 +313,40 @@ class Location:
     state: Optional[str] = None # str(20)
 
 
+@dataclass(frozen=True)
+class EnergyContract:
+    supplier_name: str  # str(64)
+    contract_id: Optional[str] = None  # str(64)
+
+
+@dataclass(frozen=True)
+class Token:
+    country_code: str  # CiString(2)
+    party_id: str  # CiString(3)
+    uid: str  # CiString(36)
+    type: TokenType
+    contract_id: str  # CiString(36)
+    issuer: str  # str(64)
+    valid: bool
+    whitelist: WhitelistType
+    last_updated: str  # datetime str(25)
+    visual_number: Optional[str] = None  # str(64)
+    group_id: Optional[str] = None # CiString(36)
+    language: Optional[str] = None  # str: 2 Language Code ISO 639-1. This optional field indicates the Token owner’s preferred interface language.
+    default_profile_type: Optional[ProfileType] = None
+    energy_contract: Optional[EnergyContract] = None
+
+
+@dataclass(frozen=True)
+class LocationReferences:
+    location_id: str  # CiString(36)
+    evse_uids: List[str] = field(default_factory=list)  # CiString(36)
+
+
+@dataclass(frozen=True)
+class AuthorizationInfo:
+    allowed: AllowedType
+    token: Token
+    location: Optional[LocationReferences] = None
+    authorization_reference: Optional[str] = None # CiString(36)
+    info: Optional[DisplayText] = None

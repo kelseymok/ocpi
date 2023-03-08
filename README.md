@@ -9,7 +9,7 @@ This repository contains JSON Schemas (to validate against as a contract test) a
 - [ ] Sessions
 - [x] CDRs
 - [ ] Tariffs
-- [ ] Tokens
+- [x] Tokens
 - [ ] Commands
 - [ ] ChargingProfiles
 - [ ] HubClientInfo
