@@ -83,7 +83,7 @@ class PriceComponent:
 @dataclass(frozen=True)
 class TariffElement:
     price_components: PriceComponent  # + cardinality
-    restrictions: Optional[TariffRestrictions]
+    restrictions: Optional[TariffRestrictions] = None
 
 
 @dataclass(frozen=True)
