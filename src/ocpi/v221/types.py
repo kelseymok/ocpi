@@ -119,7 +119,7 @@ class Tariff:
     tariff_alt_url: Optional[str] = None  # URL
     min_price: Optional[Price] = None
     max_price: Optional[Price] = None
-    elements: Optional[List[TariffElement]] = field(default_factory=list)  # + Cardinality
+    elements: List[TariffElement] = field(default_factory=list)  # + Cardinality
     start_date_time: Optional[str] = None  # UTC
     end_date_time: Optional[str] = None  # UTC
     energy_mix: Optional[EnergyMix] = None
@@ -134,7 +134,7 @@ class CdrDimension:
 @dataclass(frozen=True)
 class ChargingPeriod:
     start_date_time: str  # use a proper str class
-    dimensions: CdrDimension  # + Cardinality
+    dimensions: List[CdrDimension] = field(default_factory=list)  # + Cardinality
     tariff_id: Optional[str] = None # CiString(36)
 
 
