@@ -51,7 +51,7 @@ class URL:
 @dataclass(frozen=True)
 class Price:
     excl_vat: float  # JSON numbers, 4 decimals and a sufficiently large number of digits
-    incl_vat: Optional[float]  # JSON numbers, 4 decimals and a sufficiently large number of digits
+    incl_vat: Optional[float] = None  # JSON numbers, 4 decimals and a sufficiently large number of digits
 
 
 @dataclass(frozen=True)
